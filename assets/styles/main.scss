@@ -1,4 +1,6 @@
-$blue: #392;
+$latoFont: "Lato", sans-serif;
+$robotoFont: "Roboto Mono", monospace;
+$blue: #3c96ff;
 
 * {
 	box-sizing: border-box;
@@ -6,7 +8,7 @@ $blue: #392;
 
 body {
 	color: #fff;
-	font-family: 'Lato', sans-serif;
+	font-family: $latoFont;
 }
 
 h1,
@@ -15,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Roboto Condensed', sans-serif;
+	font-family: $robotoFont;
 	line-height: 1.125em;
 }
 

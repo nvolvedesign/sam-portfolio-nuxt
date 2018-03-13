@@ -1,35 +1,31 @@
 <template>
-	<div>
-		<div class="background-image">
-			<div class="container">
-				<div class="content">
+	<div class="container">
+		<div class="content">
 
-					<div class="headshot">
-					</div>
-
-					<h1 class="title">
-						<div>
-							Welcome to the
-						</div>
-
-						<div>
-							Portfolio of Sam Nevarez
-						</div>
-					</h1>
-
-					<router-link to="about">
-						Enter Portfolio
-					</router-link>
-
-				</div>
+			<div class="headshot">
 			</div>
+
+			<h1 class="title">
+				<div>
+					Welcome to the
+				</div>
+
+				<div>
+					Portfolio of Sam Nevarez
+				</div>
+			</h1>
+
+			<router-link to="about" class="about_link">
+				Enter Portfolio
+			</router-link>
+
 		</div>
 	</div>
 </template>
 
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
 	// asyncData(context) {
@@ -42,48 +38,43 @@ export default {
 	// },
 
 	data: function() {
-		return {}
+		return {};
 	}
-}
+};
 </script>
 
 <style lang="scss" scoped>
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
 
-	.background-image {
-		background-image: url('~/images/blue-background.png');
-		position: absolute;
-		z-index: -1;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		display: flex;
-		justify-content: center;
-	}
+.content {
+	padding: 0 15px;
+	text-align: center;
+	text-transform: uppercase;
+}
 
-	.container {
-		align-self: center;
-		padding: 0 15px;
-	}
+.headshot {
+	background-image: url("~/images/sam.png");
+	background-size: cover;
+	margin: 0 auto 46px;
+	height: 210px;
+	width: 210px;
+}
 
-	.content {
-		text-align: center;
-		text-transform: uppercase;
-	}
+.title {
+	margin: 0 0 30px;
+	font-size: 32px;
+	font-weight: 400;
+}
 
-	.headshot {
-		background-image: url('~/images/sam.png');
-		background-size: cover;
-		margin: 0 auto 46px;
-		height: 210px;
-		width: 210px;
-	}
-
-	.title {
-		margin: 0 0 30px;
-		font-size: 32px;
-		color: $blue;
-	}
-
+.about_link {
+	font-size: 24px;
+	color: $blue;
+	font-weight: 700;
+}
 </style>
 
