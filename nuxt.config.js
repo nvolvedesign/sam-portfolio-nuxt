@@ -26,5 +26,6 @@ module.exports = {
 					"https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Mono:400,700"
 			}
 		]
-	}
+	},
+	loading: false
 };

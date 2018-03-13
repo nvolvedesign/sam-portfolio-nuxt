@@ -1,6 +1,8 @@
 <template>
 	<div class="background-image">
-		<Menu v-if="$route.path !== '/'" />
+		<!-- <transition name="fade">
+			<Menu v-if="$route.path !== '/'" />
+		</transition> -->
 		<nuxt/>
 	</div>
 </template>
@@ -11,7 +13,8 @@ import Menu from "../components/menu";
 export default {
 	components: {
 		Menu
-	}
+	},
+	transition: "fade"
 };
 </script>
 
@@ -27,5 +30,13 @@ export default {
 	right: 0;
 	top: 0;
 	bottom: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>
