@@ -37,7 +37,12 @@ module.exports = {
 
 			config.module.rules.push({
 				test: /\.svg$/,
-				loader: "vue-svg-loader" // `vue-svg` for webpack 1.x
+				loader: "vue-svg-loader",
+				options: {
+					svgo: {
+						plugins: [{ cleanupIDs: false }]
+					}
+				}
 			});
 		}
 	}
