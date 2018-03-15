@@ -90,7 +90,7 @@ export default {
 	&:hover {
 		.navigation__list-item-text {
 			color: $blue;
-			text-decoration: underline;
+			border-bottom: 1px solid;
 		}
 
 		.navigation__bullet {
@@ -109,13 +109,15 @@ export default {
 	width: 9px;
 	margin-right: 22px;
 	transform: scale(1);
-	transition: transform 0.2s;
+	transition: transform 0.2s ease;
 	// border-radius: 50%;
+	-webkit-transform:translate3d(0,0,0); //Fixes Safari Flicker Bug https://stackoverflow.com/questions/3461441/prevent-flicker-on-webkit-transition-of-webkit-transform/8948115
 }
 
 .navigation__list-item-text {
 	text-transform: uppercase;
 	font-size: 20/16 * 1rem;
 	transition: color 0.2s;
+	border-bottom: 1px solid transparent;
 }
 </style>

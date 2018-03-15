@@ -25,22 +25,11 @@
 
 
 <script>
-import axios from "axios";
-
 export default {
-	// asyncData(context) {
-	// 	return axios.get(`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE}/entries?access_token=${process.env.CONTENTFUL_KEY}`)
-	// 	.then(resp => {
-	// 		return {
-	// 			blogPosts: resp.data.items,
-	// 		}
-	// 	});
-	// },
-
-	data: function() {
-		return {};
-	},
-	layout: "home"
+	layout: "home",
+	head: {
+		title: "Home"
+	}
 };
 </script>
 
@@ -79,3 +68,6 @@ export default {
 }
 </style>
 
+<style lang="scss">
+
+</style>

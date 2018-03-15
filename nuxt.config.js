@@ -1,20 +1,18 @@
-const resolve = require("path").resolve;
-
 module.exports = {
-	css: ["normalize.css", { src: "@/assets/styles/main.scss", lang: "scss" }],
+	css: ["normalize.css"],
 	modules: [
 		// Simple usage
 		"@nuxtjs/dotenv",
 		[
 			"nuxt-sass-resources-loader",
-			resolve(__dirname, "assets/styles/main.scss")
+			"./assets/styles/main.scss"
 		]
 	],
 	generate: {
 		fallback: true // if you want to use '404.html'
 	},
 	head: {
-		title: "Sam Nevarez - Portfolio",
+		titleTemplate: '%s - Sam Nevarez',
 		meta: [
 			{ charset: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" }
