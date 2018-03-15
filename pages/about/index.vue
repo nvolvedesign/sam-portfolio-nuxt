@@ -24,7 +24,7 @@ export default {
 				}/entries?access_token=${process.env.CONTENTFUL_KEY}`
 			)
 			.then(resp => {
-				console.log(resp.data.items);
+				// console.log(resp.data.items);
 				return {
 					blogPosts: marked(resp.data.items[1].fields.postContent)
 				};

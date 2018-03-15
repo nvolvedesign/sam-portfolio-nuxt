@@ -39,7 +39,8 @@ export default {
 
 	data: function() {
 		return {};
-	}
+	},
+	layout: "home"
 };
 </script>
 

@@ -27,5 +27,18 @@ module.exports = {
 			}
 		]
 	},
-	loading: false
+	loading: false,
+	build: {
+		extend(config) {
+			const urlLoader = config.module.rules.find(
+				rule => rule.loader === "url-loader"
+			);
+			urlLoader.test = /\.(png|jpe?g|gif)$/;
+
+			config.module.rules.push({
+				test: /\.svg$/,
+				loader: "vue-svg-loader" // `vue-svg` for webpack 1.x
+			});
+		}
+	}
 };
