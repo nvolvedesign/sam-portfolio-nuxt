@@ -1,6 +1,4 @@
-$latoFont: "Lato", sans-serif;
-$robotoFont: "Roboto Mono", monospace;
-$blue: #3c96ff;
+@import "./sass.scss";
 
 * {
 	box-sizing: border-box;
@@ -24,4 +22,5 @@ h6 {
 
 p {
 	line-height: 32px;
+	font-size: (20 / 16) * 1rem;
 }

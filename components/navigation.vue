@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .navigation__container {
 	display: flex;
 	justify-content: center;
@@ -111,13 +111,17 @@ export default {
 	transform: scale(1);
 	transition: transform 0.2s ease;
 	// border-radius: 50%;
-	-webkit-transform:translate3d(0,0,0); //Fixes Safari Flicker Bug https://stackoverflow.com/questions/3461441/prevent-flicker-on-webkit-transition-of-webkit-transform/8948115
+	-webkit-transform: translate3d(
+		0,
+		0,
+		0
+	); //Fixes Safari Flicker Bug https://stackoverflow.com/questions/3461441/prevent-flicker-on-webkit-transition-of-webkit-transform/8948115
 }
-
 .navigation__list-item-text {
 	text-transform: uppercase;
 	font-size: 20/16 * 1rem;
 	transition: color 0.2s;
 	border-bottom: 1px solid transparent;
+	font-weight: 700;
 }
 </style>

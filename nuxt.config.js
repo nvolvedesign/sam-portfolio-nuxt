@@ -1,18 +1,15 @@
 module.exports = {
-	css: ["normalize.css"],
+	css: ["normalize.css", "~/assets/styles/styles.scss"],
 	modules: [
 		// Simple usage
 		"@nuxtjs/dotenv",
-		[
-			"nuxt-sass-resources-loader",
-			"./assets/styles/main.scss"
-		]
+		["nuxt-sass-resources-loader", "./assets/styles/sass.scss"]
 	],
 	generate: {
 		fallback: true // if you want to use '404.html'
 	},
 	head: {
-		titleTemplate: '%s - Sam Nevarez',
+		titleTemplate: "%s - Sam Nevarez",
 		meta: [
 			{ charset: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" }

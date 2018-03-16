@@ -50,7 +50,7 @@ export default {
 .headshot {
 	background-image: url("~/images/sam.png");
 	background-size: cover;
-	margin: 0 auto 46px;
+	margin: 0 auto 51px;
 	height: 210px;
 	width: 210px;
 }
@@ -66,8 +66,4 @@ export default {
 	color: $blue;
 	font-weight: 700;
 }
-</style>
-
-<style lang="scss">
-
 </style>
