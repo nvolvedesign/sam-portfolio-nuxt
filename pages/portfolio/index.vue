@@ -1,5 +1,9 @@
 <template>
-
+	<div>
+		<h2 v-for="category in categories" :key="category">
+			{{ category }}
+		</h2>
+	</div>
 </template>
 
 <script>
@@ -14,7 +18,7 @@ export default {
 		title: "Portfolio"
 	},
 	asyncData(context) {
-		client
+		return client
 			.getEntries({
 				content_type: "category"
 			})
@@ -43,7 +47,11 @@ export default {
 					})
 				);
 			})
-			.then(categories => console.log(categories));
+			.then(categories => {
+				return {
+					categories: categories.filter(category => category)
+				};
+			});
 	}
 };
 </script>
