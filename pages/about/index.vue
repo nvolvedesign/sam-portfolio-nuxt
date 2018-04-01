@@ -1,9 +1,5 @@
 <template>
-	<div class="container">
-		<h1 class="title">
-			About Me
-		</h1>
-
+	<div>
 		<div class="headshot">
 		</div>
 
@@ -26,10 +22,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-	padding-top: 64px;
-}
-
 .headshot {
 	background-image: url("~/images/sam.png");
 	background-size: cover;
@@ -37,14 +29,6 @@ export default {
 	height: 143px;
 	width: 143px;
 	float: left;
-}
-
-.title {
-	font-weight: 400;
-	text-transform: uppercase;
-	padding-bottom: 32px;
-	border-bottom: 2px solid #fff;
-	margin: 0 0 40px;
 }
 
 .text {

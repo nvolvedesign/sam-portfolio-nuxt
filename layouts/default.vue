@@ -2,7 +2,12 @@
 	<BackgroundImg>
 		<div class="flex-container">
 			<Navigation class="navigation" />
-			<nuxt class="content" />
+			<div class="content">
+				<h1 class="title">
+					About Me
+				</h1>
+				<nuxt />
+			</div>
 		</div>
 	</BackgroundImg>
 </template>
@@ -31,5 +36,14 @@ export default {
 
 .content {
 	flex: 3;
+	padding-top: 64px;
+}
+
+.title {
+	font-weight: 400;
+	text-transform: uppercase;
+	padding-bottom: 32px;
+	border-bottom: 2px solid #fff;
+	margin: 0 0 40px;
 }
 </style>
