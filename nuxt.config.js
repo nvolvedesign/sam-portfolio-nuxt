@@ -40,5 +40,8 @@ module.exports = {
 				}
 			});
 		}
+	},
+	generate: {
+		routes: ["/portfolio/first-category"]
 	}
 };
