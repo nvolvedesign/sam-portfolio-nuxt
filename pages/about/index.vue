@@ -17,7 +17,8 @@
 export default {
 	head: {
 		title: "About Me"
-	}
+	},
+	pageTitle: "About Me"
 };
 </script>
 

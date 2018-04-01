@@ -4,7 +4,7 @@
 			<Navigation class="navigation" />
 			<div class="content">
 				<h1 class="title">
-					About Me
+					{{ title }}
 				</h1>
 				<nuxt />
 			</div>
@@ -20,6 +20,15 @@ export default {
 	components: {
 		Navigation,
 		BackgroundImg
+	},
+	computed: {
+		title() {
+			return this.$route.matched.map(r => {
+				return r.components.default.options
+					? r.components.default.options.pageTitle
+					: r.components.default.pageTitle;
+			})[0];
+		}
 	}
 };
 </script>
@@ -45,5 +54,6 @@ export default {
 	padding-bottom: 32px;
 	border-bottom: 2px solid #fff;
 	margin: 0 0 40px;
+	min-height: 70px;
 }
 </style>

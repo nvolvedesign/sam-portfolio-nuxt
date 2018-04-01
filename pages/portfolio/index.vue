@@ -17,6 +17,7 @@ export default {
 	head: {
 		title: "Portfolio"
 	},
+	pageTitle: "Portfolio",
 	asyncData(context) {
 		return client
 			.getEntries({
