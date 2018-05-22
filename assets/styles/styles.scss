@@ -1,13 +1,21 @@
+@import "../../node_modules/normalize.css/normalize.css";
 @import "./sass.scss";
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#__nuxt,
+#__layout {
+  min-height: 100%;
 }
 
 body {
-	color: #fff;
-	font-family: $latoFont;
-	font-size: 1rem;
+  color: #fff;
+  font-family: $latoFont;
+  font-size: 1rem;
 }
 
 h1,
@@ -16,11 +24,15 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: $robotoFont;
-	line-height: 1.125em;
+  font-family: $robotoFont;
+  line-height: 1.125em;
 }
 
 p {
-	line-height: 32px;
-	font-size: (20 / 16) * 1rem;
+  line-height: 32px;
+  font-size: 1.25rem;
+}
+
+a {
+  text-decoration: none;
 }

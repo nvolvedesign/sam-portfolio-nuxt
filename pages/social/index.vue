@@ -1,11 +1,16 @@
 <template>
-  <div>
-	  My social media links
-  </div>
+    <div>
+        My social media links
+    </div>
 </template>
 
 <script>
 export default {
-	pageTitle: "Social Media"
+  created: function() {
+    return this.$store.commit("setPageTitle", "Social Media");
+  },
+  head: {
+    title: "Portfolio"
+  }
 };
 </script>

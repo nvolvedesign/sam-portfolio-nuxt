@@ -1,3 +1,23 @@
+// Variables
 $latoFont: "Lato", sans-serif;
 $robotoFont: "Roboto Mono", monospace;
 $blue: #3c96ff;
+$transitionSpeed: 200ms;
+
+// Mixins
+@mixin md {
+  @media (min-width: 860px) {
+    @content;
+  }
+}
+
+@mixin bp($point) {
+  @if $point == md {
+    @media (min-width: 860px) {
+      @content;
+    }
+  }
+  //     @else if $point == laptop {
+  //       @media (min-width: 64em) { @content ; }
+  //    }
+}

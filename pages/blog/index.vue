@@ -1,11 +1,13 @@
 <template>
-	<div>
-		The blog
-	</div>
+    <div>
+        The blog
+    </div>
 </template>
 
 <script>
 export default {
-	pageTitle: "Blog"
+  created: function() {
+    return this.$store.commit("setPageTitle", "Blog");
+  }
 };
 </script>
