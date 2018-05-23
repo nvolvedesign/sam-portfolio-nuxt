@@ -20,7 +20,7 @@ export default {
     title: "Portfolio"
   },
   fetch({ store, params }) {
-    client
+    return client
       .getEntries({
         "fields.slug": params.category,
         content_type: "category"

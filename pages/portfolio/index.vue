@@ -5,12 +5,6 @@
                 {{ category.name }}
             </h2>
         </nuxt-link>
-
-        <nuxt-link v-for="category in categories" :key="category.slug" :to="`/portfolio/${category.slug}`" class="link">
-            <h2>
-                {{ category.name }}
-            </h2>
-        </nuxt-link>
     </div>
 </template>
 
@@ -28,7 +22,9 @@ export default {
   created: function() {
     return this.$store.commit("setPageTitle", "Portfolio");
   },
-  asyncData(context) {
+  asyncData({ params, error, payload }) {
+    if (payload) return { categories: payload };
+
     return client
       .getEntries({
         content_type: "category"

@@ -67,7 +67,6 @@ export default {
   top: 0;
   left: 0;
   min-height: 100vh;
-  background-color: red;
   padding: 24px;
   //   width: 100%;
   transform: translateX(-100%);
@@ -78,6 +77,7 @@ export default {
     padding-top: 137px;
     min-height: none;
     transform: translateX(0);
+    // transition: none;
   }
 
   &.opened {

@@ -2,18 +2,22 @@
     <div class="container">
         <div class="content">
 
-            <div class="headshot">
-            </div>
-
-            <h1 class="title">
-                <div>
-                    Welcome to the
+            <transition name="fade-down">
+                <div class="headshot">
                 </div>
+            </transition>
 
-                <div>
-                    Portfolio of Sam Nevarez
-                </div>
-            </h1>
+            <transition name="fade-up">
+                <h1 class="title">
+                    <div>
+                        Welcome to the
+                    </div>
+
+                    <div>
+                        Portfolio of Sam Nevarez
+                    </div>
+                </h1>
+            </transition>
 
             <router-link to="about" class="enter_link">
                 Enter Portfolio
