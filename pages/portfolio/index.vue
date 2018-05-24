@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <nuxt-link v-for="category in categories" :key="category.slug" :to="`/portfolio/${category.slug}`" class="link">
-            <h2>
+            <h2 class="title">
                 {{ category.name }}
             </h2>
         </nuxt-link>
@@ -10,7 +10,7 @@
 
 <script>
 import { createClient } from "contentful";
-const client = createClient({
+const contentful = createClient({
   space: process.env.CONTENTFUL_SPACE,
   accessToken: process.env.CONTENTFUL_KEY
 });
@@ -25,7 +25,7 @@ export default {
   asyncData({ params, error, payload }) {
     if (payload) return { categories: payload };
 
-    return client
+    return contentful
       .getEntries({
         content_type: "category"
       })
@@ -38,11 +38,11 @@ export default {
         return Promise.all(
           categories.map(category => {
             return new Promise(resolve => {
-              client
+              contentful
                 .getEntries({
                   content_type: "portfolioPiece",
                   "fields.category.sys.contentType.sys.id": "category",
-                  "fields.category.fields.name[match]": category.name
+                  "fields.category.fields.name": category.name
                 })
                 .then(entries => {
                   if (entries.total) {
@@ -87,5 +87,10 @@ export default {
   &:hover {
     background-color: darken($blue, 10%);
   }
+}
+
+.title {
+  font-weight: 400;
+  text-transform: uppercase;
 }
 </style>
