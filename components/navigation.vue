@@ -91,6 +91,7 @@ export default {
   margin-bottom: 22px;
   display: flex;
   align-items: center;
+  transform: all 200ms ease;
 
   &.active,
   &:hover {

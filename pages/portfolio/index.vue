@@ -83,6 +83,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 200ms ease-in-out;
 
   &:hover {
     background-color: darken($blue, 10%);

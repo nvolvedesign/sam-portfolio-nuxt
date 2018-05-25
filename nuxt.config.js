@@ -1,6 +1,6 @@
 require("dotenv").config();
 const createClient = require("contentful").createClient;
-const client = createClient({
+const contentful = createClient({
   space: process.env.CONTENTFUL_SPACE,
   accessToken: process.env.CONTENTFUL_KEY
 });
@@ -50,7 +50,7 @@ module.exports = {
   },
   generate: {
     routes: () => {
-      return client
+      return contentful
         .getEntries({
           content_type: "category"
         })
@@ -63,7 +63,7 @@ module.exports = {
           return Promise.all(
             categories.map(category => {
               return new Promise(resolve => {
-                client
+                contentful
                   .getEntries({
                     content_type: "portfolioPiece",
                     "fields.category.sys.contentType.sys.id": "category",
