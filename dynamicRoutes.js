@@ -19,7 +19,7 @@ module.exports = async () => {
     "sys.id[in]": categoryIds
   });
 
-  const categoriesRoutes = categoryData.map(category => {
+  const categoriesRoutes = categoryData.items.map(category => {
     const categoryId = category.sys.id;
     const categorySlug = category.fields.slug;
 
@@ -33,4 +33,23 @@ module.exports = async () => {
       payload: categoryPieces
     };
   });
+
+  const piecesRoutes = portfolioPieces.items.map(piece => {
+    const pieceCategoryId = piece.fields.category.sys.id;
+    let categorySlug;
+
+    for (let ind = 0; i < categoryData.items.length; i++) {
+      if (categoryData.items[i].id === pieceCategoryId) {
+        categorySlug = categoryData.items[i].fields.slug;
+        break;
+      }
+    }
+
+    return {
+      route: `/portfolio/${categorySlug}/${piece.fields.slug}`,
+      payload: piece.fields.body
+    };
+  });
+
+  return [...piecesRoutes, ...categoriesRoutes];
 };
