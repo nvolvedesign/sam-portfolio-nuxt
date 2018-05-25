@@ -13,14 +13,21 @@ module.exports = async () => {
     content_type: "portfolioPiece"
   });
 
+  const addCategoryData = (categoryInfo, piece) => {
+    if (!categoriesData.hasOwnProperty(categoryInfo.slug)) {
+      categoriesData[categoryInfo.slug] = {
+        title: categoryInfo.title,
+        pieces: []
+      };
+    }
+    categoriesData[categoryInfo.slug].pieces.push(piece);
+  };
+
   const piecesRoutes = portfolioPieces.items.map(piece => {
-    const categorySlug = piece.fields.category.fields.slug;
+    const categoryInfo = piece.fields.category.fields;
     const pieceSlug = piece.fields.slug;
 
-    if (!categoriesData.hasOwnProperty(categorySlug)) {
-      categoriesData[categorySlug] = [];
-    }
-    categoriesData[categorySlug].push(piece);
+    addCategoryData(categoryInfo, piece);
 
     return {
       route: `/portfolio/${categorySlug}/${pieceSlug}`,

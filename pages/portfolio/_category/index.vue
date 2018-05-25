@@ -18,39 +18,29 @@ const contentful = createClient({
 });
 
 export default {
-  fetch({ store, params }) {
-    return contentful
-      .getEntries({
-        "fields.slug": params.category,
-        content_type: "category"
-      })
-      .then(res => store.commit("setPageTitle", res.items[0].fields.name));
-  },
-  asyncData({ params, error, payload }) {
+  async asyncData({ params, error, payload }) {
     if (payload) return { portfolioPieces: payload };
 
-    return contentful
-      .getEntries({
-        content_type: "category",
-        "fields.slug": params.category
-      })
-      .then(resp => {
-        const categoryId = resp.items[0].sys.id;
+    const categoryData = await contentful.getEntries({
+      content_type: "category",
+      "fields.slug": params.category
+    });
 
-        return contentful
-          .getEntries({
-            content_type: "portfolioPiece",
-            "fields.category.sys.id": categoryId
-          })
-          .then(resp => {
-            return {
-              portfolioPieces: resp.items
-            };
-          });
-      });
+    const portfolioPieces = await contentful.getEntries({
+      content_type: "portfolioPiece",
+      "fields.category.sys.id": categoryData.items[0].sys.id
+    });
+
+    return {
+      portfolioPieces: portfolioPieces.items,
+      title: categoryData.items[0].fields.name
+    };
+  },
+  created() {
+    return this.$store.commit("setPageTitle", this.title);
   },
   head() {
-    return { title: this.$store.state.pageTitle };
+    return { title: this.title };
   }
 };
 </script>

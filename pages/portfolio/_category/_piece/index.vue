@@ -1,7 +1,6 @@
 <template>
     <div v-html="body">
     </div>
-
 </template>
 
 
@@ -14,30 +13,24 @@ const contentful = createClient({
 });
 
 export default {
-  fetch({ store, params }) {
-    return contentful
-      .getEntries({
-        "fields.slug": params.piece,
-        content_type: "portfolioPiece"
-      })
-      .then(res => store.commit("setPageTitle", res.items[0].fields.title));
-  },
-  asyncData({ params, error, payload }) {
+  async asyncData({ params, error, payload }) {
     if (payload) return { body: marked(payload) };
 
-    return contentful
-      .getEntries({
-        content_type: "portfolioPiece",
-        "fields.slug": params.piece
-      })
-      .then(resp => {
-        return {
-          body: marked(resp.items[0].fields.body)
-        };
-      });
+    const piece = await contentful.getEntries({
+      content_type: "portfolioPiece",
+      "fields.slug": params.piece
+    });
+
+    return {
+      body: marked(piece.items[0].fields.body),
+      title: piece.items[0].fields.title
+    };
+  },
+  created() {
+    return this.$store.commit("setPageTitle", this.title);
   },
   head() {
-    return { title: this.$store.state.pageTitle };
+    return { title: this.title };
   }
 };
 </script>
