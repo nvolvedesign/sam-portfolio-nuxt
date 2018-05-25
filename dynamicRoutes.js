@@ -18,4 +18,19 @@ module.exports = async () => {
     content_type: "category",
     "sys.id[in]": categoryIds
   });
+
+  const categoriesRoutes = categoryData.map(category => {
+    const categoryId = category.sys.id;
+    const categorySlug = category.fields.slug;
+
+    const categoryPieces = portfolioPieces.map(piece => {
+      const pieceCategoryId = piece.fields.category.sys.id;
+      if (pieceCategoryId === categoryId) return piece;
+    });
+
+    return {
+      route: `/portfolio/${categorySlug}`,
+      payload: categoryPieces
+    };
+  });
 };
