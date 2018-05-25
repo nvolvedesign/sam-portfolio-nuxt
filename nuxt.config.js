@@ -1,9 +1,5 @@
 require("dotenv").config();
-const createClient = require("contentful").createClient;
-const contentful = createClient({
-  space: process.env.CONTENTFUL_SPACE,
-  accessToken: process.env.CONTENTFUL_KEY
-});
+const dynamicRoutes = require("./dynamicRoutes");
 
 module.exports = {
   css: ["normalize.css", "~/assets/styles/styles.scss"],
@@ -49,45 +45,6 @@ module.exports = {
     }
   },
   generate: {
-    routes: () => {
-      return contentful
-        .getEntries({
-          content_type: "category"
-        })
-        .then(function(response) {
-          const categories = response.items.map(entry => {
-            return entry.fields;
-          });
-
-          // This code block checks whether or not each category has entries
-          return Promise.all(
-            categories.map(category => {
-              return new Promise(resolve => {
-                contentful
-                  .getEntries({
-                    content_type: "portfolioPiece",
-                    "fields.category.sys.contentType.sys.id": "category",
-                    "fields.category.fields.name[match]": category.name
-                  })
-                  .then(entries => {
-                    if (entries.total) {
-                      resolve(category);
-                    }
-                    resolve(false);
-                  });
-              });
-            })
-          );
-        })
-        .then(categories => {
-          const filteredCategories = categories.filter(category => category);
-          return filteredCategories.map(category => {
-            return {
-              route: `/portfolio/${category.slug}`,
-              payload: category
-            };
-          });
-        });
-    }
+    routes: dynamicRoutes
   }
 };

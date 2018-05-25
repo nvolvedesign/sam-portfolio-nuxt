@@ -22,7 +22,9 @@ export default {
       })
       .then(res => store.commit("setPageTitle", res.items[0].fields.title));
   },
-  asyncData({ params }) {
+  asyncData({ params, error, payload }) {
+    if (payload) return { body: marked(payload) };
+
     return contentful
       .getEntries({
         content_type: "portfolioPiece",

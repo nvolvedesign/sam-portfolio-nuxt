@@ -22,9 +22,7 @@ export default {
   created: function() {
     return this.$store.commit("setPageTitle", "Portfolio");
   },
-  asyncData({ params, error, payload }) {
-    if (payload) return { categories: payload };
-
+  asyncData() {
     return contentful
       .getEntries({
         content_type: "category"

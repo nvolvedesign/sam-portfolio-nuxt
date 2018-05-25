@@ -6,50 +6,33 @@ const contentful = createClient({
 });
 
 module.exports = async () => {
+  const categoriesData = {};
+  const categoriesRoutes = [];
+
   const portfolioPieces = await contentful.getEntries({
     content_type: "portfolioPiece"
   });
 
-  const categoryIds = portfolioPieces.items.map(
-    piece => piece.fields.category.id
-  );
-
-  const categoryData = await contentful.getEntries({
-    content_type: "category",
-    "sys.id[in]": categoryIds
-  });
-
-  const categoriesRoutes = categoryData.items.map(category => {
-    const categoryId = category.sys.id;
-    const categorySlug = category.fields.slug;
-
-    const categoryPieces = portfolioPieces.map(piece => {
-      const pieceCategoryId = piece.fields.category.sys.id;
-      if (pieceCategoryId === categoryId) return piece;
-    });
-
-    return {
-      route: `/portfolio/${categorySlug}`,
-      payload: categoryPieces
-    };
-  });
-
   const piecesRoutes = portfolioPieces.items.map(piece => {
-    const pieceCategoryId = piece.fields.category.sys.id;
-    let categorySlug;
+    const categorySlug = piece.fields.category.fields.slug;
+    const pieceSlug = piece.fields.slug;
 
-    for (let ind = 0; i < categoryData.items.length; i++) {
-      if (categoryData.items[i].id === pieceCategoryId) {
-        categorySlug = categoryData.items[i].fields.slug;
-        break;
-      }
+    if (!categoriesData.hasOwnProperty(categorySlug)) {
+      categoriesData[categorySlug] = [];
     }
+    categoriesData[categorySlug].push(piece);
 
     return {
-      route: `/portfolio/${categorySlug}/${piece.fields.slug}`,
+      route: `/portfolio/${categorySlug}/${pieceSlug}`,
       payload: piece.fields.body
     };
   });
 
+  for (const category in categoriesData) {
+    categoriesRoutes.push({
+      route: `/portfolio/${category}`,
+      payload: categoriesData[category]
+    });
+  }
   return [...piecesRoutes, ...categoriesRoutes];
 };

@@ -26,7 +26,9 @@ export default {
       })
       .then(res => store.commit("setPageTitle", res.items[0].fields.name));
   },
-  asyncData({ params }) {
+  asyncData({ params, error, payload }) {
+    if (payload) return { portfolioPieces: payload };
+
     return contentful
       .getEntries({
         content_type: "category",
