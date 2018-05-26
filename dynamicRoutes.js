@@ -6,13 +6,9 @@ const contentful = createClient({
 });
 
 module.exports = async () => {
+  // Variable, function declarations
   const categoriesData = {};
   const categoriesRoutes = [];
-
-  const portfolioPieces = await contentful.getEntries({
-    content_type: "portfolioPiece"
-  });
-
   const aggregateCategoryData = (categoryInfo, piece) => {
     if (!categoriesData.hasOwnProperty(categoryInfo.slug)) {
       categoriesData[categoryInfo.slug] = {
@@ -22,6 +18,11 @@ module.exports = async () => {
     }
     categoriesData[categoryInfo.slug].pieces.push(piece);
   };
+
+  // Start route generation
+  const portfolioPieces = await contentful.getEntries({
+    content_type: "portfolioPiece"
+  });
 
   const piecesRoutes = portfolioPieces.items.map(piece => {
     const categoryInfo = piece.fields.category.fields;
