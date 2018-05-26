@@ -13,7 +13,7 @@ module.exports = async () => {
     content_type: "portfolioPiece"
   });
 
-  const addCategoryData = (categoryInfo, piece) => {
+  const aggregateCategoryData = (categoryInfo, piece) => {
     if (!categoriesData.hasOwnProperty(categoryInfo.slug)) {
       categoriesData[categoryInfo.slug] = {
         title: categoryInfo.title,
@@ -27,7 +27,7 @@ module.exports = async () => {
     const categoryInfo = piece.fields.category.fields;
     const pieceSlug = piece.fields.slug;
 
-    addCategoryData(categoryInfo, piece);
+    aggregateCategoryData(categoryInfo, piece);
 
     return {
       route: `/portfolio/${categorySlug}/${pieceSlug}`,
