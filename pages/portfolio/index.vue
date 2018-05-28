@@ -22,41 +22,28 @@ export default {
   created: function() {
     return this.$store.commit("setPageTitle", "Portfolio");
   },
-  asyncData() {
-    return contentful
-      .getEntries({
-        content_type: "category"
-      })
-      .then(function(response) {
-        const categories = response.items.map(entry => {
-          return entry.fields;
-        });
+  async asyncData() {
+    const portfolioPieces = await contentful.getEntries({
+      content_type: "portfolioPiece"
+    });
 
-        // This code block checks whether or not each category has entries
-        return Promise.all(
-          categories.map(category => {
-            return new Promise(resolve => {
-              contentful
-                .getEntries({
-                  content_type: "portfolioPiece",
-                  "fields.category.sys.contentType.sys.id": "category",
-                  "fields.category.fields.name": category.name
-                })
-                .then(entries => {
-                  if (entries.total) {
-                    resolve(category);
-                  }
-                  resolve(false);
-                });
-            });
-          })
-        );
-      })
-      .then(categories => {
-        return {
-          categories: categories.filter(category => category)
-        };
-      });
+    let categoriesData = {};
+    portfolioPieces.items.forEach(piece => {
+      const categorySlug = piece.fields.category.fields.slug;
+      const categoryName = piece.fields.category.fields.name;
+      categoriesData[categorySlug] = categoryName;
+    });
+
+    const categories = Object.keys(categoriesData).map(category => {
+      return {
+        slug: category,
+        name: categoriesData[category]
+      };
+    });
+
+    return {
+      categories
+    };
   }
 };
 </script>
