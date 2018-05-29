@@ -4,11 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "predev": "npm run contentful",
     "dev": "nuxt",
-    "build": "rimraf dist && nuxt generate"
+    "prebuild": "npm run contentful",
+    "build": "rimraf dist && nuxt generate",
+    "contentful":
+      "rimraf assets/contentful.json && echo 'Getting Contentful Content...' && node scripts/contentful.js"
   },
   "dependencies": {
-    "@nuxtjs/dotenv": "^1.1.0",
     "contentful": "^5.1.3",
     "dotenv": "^5.0.1",
     "marked": "^0.3.17",

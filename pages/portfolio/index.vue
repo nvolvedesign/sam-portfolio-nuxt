@@ -9,11 +9,7 @@
 </template>
 
 <script>
-import { createClient } from "contentful";
-const contentful = createClient({
-  space: process.env.CONTENTFUL_SPACE,
-  accessToken: process.env.CONTENTFUL_KEY
-});
+import allPortfolioPieces from "~/assets/contentful.json";
 
 export default {
   head: {
@@ -23,12 +19,8 @@ export default {
     return this.$store.commit("setPageTitle", "Portfolio");
   },
   async asyncData() {
-    const portfolioPieces = await contentful.getEntries({
-      content_type: "portfolioPiece"
-    });
-
     let categoriesData = {};
-    portfolioPieces.items.forEach(piece => {
+    allPortfolioPieces.forEach(piece => {
       const categorySlug = piece.fields.category.fields.slug;
       const categoryName = piece.fields.category.fields.name;
       categoriesData[categorySlug] = categoryName;

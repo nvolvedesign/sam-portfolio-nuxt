@@ -11,29 +11,17 @@
 
 
 <script>
-import { createClient } from "contentful";
-const contentful = createClient({
-  space: process.env.CONTENTFUL_SPACE,
-  accessToken: process.env.CONTENTFUL_KEY
-});
+import allPortfolioPieces from "~/assets/contentful.json";
 
 export default {
   async asyncData({ params, error, payload }) {
-    if (payload) return { portfolioPieces: payload };
-
-    const categoryData = await contentful.getEntries({
-      content_type: "category",
-      "fields.slug": params.category
-    });
-
-    const portfolioPieces = await contentful.getEntries({
-      content_type: "portfolioPiece",
-      "fields.category.sys.id": categoryData.items[0].sys.id
-    });
+    const categoryPieces = allPortfolioPieces.filter(
+      piece => piece.fields.category.fields.slug === params.category
+    );
 
     return {
-      portfolioPieces: portfolioPieces.items,
-      title: categoryData.items[0].fields.name
+      portfolioPieces: categoryPieces,
+      title: categoryPieces[0].fields.category.fields.name
     };
   },
   created() {

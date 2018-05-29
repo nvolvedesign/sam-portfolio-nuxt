@@ -1,13 +1,8 @@
-require("dotenv").config();
-const dynamicRoutes = require("./dynamicRoutes");
+const dynamicRoutes = require("./scripts/dynamicRoutes");
 
 module.exports = {
   css: ["normalize.css", "~/assets/styles/styles.scss"],
-  modules: [
-    // Simple usage
-    "@nuxtjs/dotenv",
-    ["nuxt-sass-resources-loader", "./assets/styles/sass.scss"]
-  ],
+  modules: [["nuxt-sass-resources-loader", "./assets/styles/sass.scss"]],
   generate: {
     fallback: true // if you want to use '404.html'
   },
