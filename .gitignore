@@ -10,6 +10,8 @@ yarn-debug.log*
 yarn-error.log*
 .nuxt
 dist
+*contentful.json
+*.DS_Store
 
 # Runtime data
 pids
