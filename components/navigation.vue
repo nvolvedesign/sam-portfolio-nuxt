@@ -1,12 +1,12 @@
 <template>
-    <div class="container">
-        <nav>
-            <nuxt-link v-for="item in navItems" :key="item.text" :to="item.link" class="list-item" :active-class="item.activeClass || 'active'" exact-active-class="active" :target="item.target || '_self'">
-                <Bullet class="bullet" />
-                <span class="list-item-text"> {{ item.text }} </span>
-            </nuxt-link>
-        </nav>
-    </div>
+  <div class="container">
+    <nav id="navigation">
+      <nuxt-link v-for="item in navItems" :key="item.text" :to="item.link" class="list-item" :active-class="item.activeClass || 'active'" exact-active-class="active" :target="item.target || '_self'">
+        <Bullet class="bullet" />
+        <span class="list-item-text"> {{ item.text }} </span>
+      </nuxt-link>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -63,21 +63,10 @@ export default {
 .container {
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-height: 100vh;
   padding: 24px;
-  //   width: 100%;
-  transform: translateX(-100%);
-  transition: transform 200ms ease-in-out;
 
   @include bp("md") {
-    position: static;
     padding-top: 137px;
-    min-height: none;
-    transform: translateX(0);
-    // transition: none;
   }
 
   &.opened {

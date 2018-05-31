@@ -8,8 +8,7 @@
     "dev": "nuxt",
     "prebuild": "npm run contentful",
     "build": "rimraf dist && nuxt generate",
-    "contentful":
-      "rimraf assets/contentful.json && echo 'Getting Contentful Content...' && node scripts/contentful.js"
+    "contentful": "rimraf assets/contentful.json && echo 'Getting Contentful Content...' && node scripts/contentful.js"
   },
   "dependencies": {
     "contentful": "^5.1.3",
