@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <nav id="navigation">
-      <nuxt-link v-for="item in navItems" :key="item.text" :to="item.link" class="list-item" :active-class="item.activeClass || 'active'" exact-active-class="active" :target="item.target || '_self'">
+      <nuxt-link v-for="item in navItems" :key="item.text" :to="item.link" class="list-item" :active-class="item.activeClass || 'active'" @click.native="$store.commit('toggleMobileMenu', false)" exact-active-class="active" :target="item.target || '_self'">
         <Bullet class="bullet" />
         <span class="list-item-text"> {{ item.text }} </span>
       </nuxt-link>

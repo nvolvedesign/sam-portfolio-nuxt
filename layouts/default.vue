@@ -1,10 +1,10 @@
 <template>
   <BackgroundImg>
-    <div class="flex-container" :class="{'menu-open': menuOpen}">
+    <div class="flex-container" :class="{'menu-open': $store.state.mobileMenuOpen}">
       <Navigation class="navigation" />
       <div class="body-container">
         <div class="title-container">
-          <button class="hamburger hamburger--spring" type="button" aria-label="Menu" aria-controls="navigation" @click="menuOpen = !menuOpen" :class="{'is-active': menuOpen}">
+          <button class="hamburger hamburger--spring" type="button" aria-label="Menu" aria-controls="navigation" @click="$store.commit('toggleMobileMenu')" :class="{'is-active': $store.state.mobileMenuOpen}">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>
@@ -31,15 +31,10 @@ export default {
     Navigation,
     BackgroundImg
   },
-  data() {
-    return {
-      menuOpen: false
-    };
-  },
   head() {
     return {
       bodyAttrs: {
-        style: this.menuOpen ? "overflow:hidden" : ""
+        style: this.$store.state.mobileMenuOpen ? "overflow:hidden" : ""
       }
     };
   }
