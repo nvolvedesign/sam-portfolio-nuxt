@@ -28,9 +28,13 @@ export default {
 .headshot {
   background-image: url("~/images/sam.png");
   background-size: cover;
-  margin: 0 32px 10px 0;
   height: 143px;
   width: 143px;
-  float: left;
+  margin: 0 auto;
+
+  @include bp("md") {
+    margin: 0 32px 10px 0;
+    float: left;
+  }
 }
 </style>

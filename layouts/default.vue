@@ -42,21 +42,31 @@ export default {
 
 .content-container {
   flex: 3;
-  padding-top: 64px;
+  padding: 24px 0 0;
+
+  @include bp("md") {
+    padding: 64px 0 0;
+  }
 }
 
 .title {
   font-weight: 400;
   text-transform: uppercase;
-  padding-bottom: 32px;
+  padding: 0 0 24px 16px;
   border-bottom: 2px solid #fff;
   margin: 0 0 40px;
-  min-height: 70px;
+
+  @include bp("md") {
+    padding: 0 0 32px;
+  }
 }
 
 .content {
-  max-width: 696px;
-  width: 80%;
-  padding-bottom: 32px;
+  padding: 0 16px 32px;
+
+  @include bp("md") {
+    max-width: 696px;
+    width: 80%;
+  }
 }
 </style>
