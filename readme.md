@@ -33,3 +33,13 @@ npm run dev
 ```
 
 6.  Open `localhost:3000` in browser
+
+## Resources
+
+Site - [www.samnevarez.com](https://www.samnevarez.com)
+
+Content API - [www.contentful.com](https://www.contentful.com)
+
+Framework - [nuxtjs.org](https://nuxtjs.org/)
+
+Host - [www.netlify.com](https://www.netlify.com)
