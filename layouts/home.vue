@@ -1,7 +1,7 @@
 <template>
-    <BackgroundImg>
-        <nuxt/>
-    </BackgroundImg>
+  <BackgroundImg>
+    <nuxt/>
+  </BackgroundImg>
 </template>
 
 <script>

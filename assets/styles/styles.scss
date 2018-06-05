@@ -42,3 +42,31 @@ a {
 img {
   width: 100%;
 }
+
+.fade-enter-active,
+.fade-leave-active,
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 200ms ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to,
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.fade-appear-down {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.fade-appear-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.fade-appear-active {
+  transition: all 600ms ease-in-out;
+}

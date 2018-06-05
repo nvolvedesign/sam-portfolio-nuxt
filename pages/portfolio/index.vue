@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
-        <nuxt-link v-for="category in categories" :key="category.slug" :to="`/portfolio/${category.slug}`" class="link">
-            <h2 class="title">
-                {{ category.name }}
-            </h2>
-        </nuxt-link>
-    </div>
+  <div class="container">
+    <nuxt-link v-for="category in categories" :key="category.slug" :to="`/portfolio/${category.slug}`" class="link">
+      <h2 class="title">
+        {{ category.name }}
+      </h2>
+    </nuxt-link>
+  </div>
 </template>
 
 <script>

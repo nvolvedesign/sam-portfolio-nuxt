@@ -1,30 +1,31 @@
 <template>
-    <div class="container">
-        <div class="content">
+  <div class="container">
+    <div class="content">
 
-            <transition name="fade-down">
-                <div class="headshot">
-                </div>
-            </transition>
-
-            <transition name="fade-up">
-                <h1 class="title">
-                    <div>
-                        Welcome to the
-                    </div>
-
-                    <div>
-                        Portfolio of Sam Nevarez
-                    </div>
-                </h1>
-            </transition>
-
-            <router-link to="about" class="enter_link">
-                Enter Portfolio
-            </router-link>
-
+      <transition appear appear-class="fade-appear-down" appear-active-class="fade-appear-active">
+        <div class="headshot">
         </div>
+      </transition>
+
+      <transition appear appear-class="fade-appear-up" appear-active-class="fade-appear-active">
+        <div>
+          <h1 class="title">
+            <div>
+              Welcome to the
+            </div>
+
+            <div>
+              Portfolio of Sam Nevarez
+            </div>
+          </h1>
+
+          <router-link to="about" class="enter_link">
+            Enter Portfolio
+          </router-link>
+        </div>
+      </transition>
     </div>
+  </div>
 </template>
 
 
